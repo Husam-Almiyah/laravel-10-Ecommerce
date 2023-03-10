@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartIndexController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductShowController;
 use App\Http\Controllers\ProfileController;
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class);
+
+Route::get('/cart', CartIndexController::class);
 
 Route::get('/products/{product:slug}', ProductShowController::class);
 
