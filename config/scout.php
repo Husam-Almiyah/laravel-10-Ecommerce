@@ -136,6 +136,12 @@ return [
             // 'users' => [
             //     'filterableAttributes'=> ['id', 'name', 'email'],
             // ],
+            'products' => [
+                'filterableAttributes'=> ['id', 'category_ids'],
+            ],
+            'categories' => [
+                'filterableAttributes'=> ['id'],
+            ],
         ],
     ],
 
