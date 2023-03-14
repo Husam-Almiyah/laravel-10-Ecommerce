@@ -45,7 +45,7 @@ class Product extends Model implements HasMedia
 
     public function categories()
     {
-        $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class);
     }
 
     public function toSearchableArray()
@@ -55,7 +55,8 @@ class Product extends Model implements HasMedia
             'title' => $this->title,
             'slug' => $this->slug,
             'price' => $this->price,
-            // 'category_ids' => $this->categories->pluck('id'),
+            'category_ids' => $this->categories->pluck('id'),
         ];
     }
+
 }
