@@ -21,12 +21,16 @@
                     </div>
                 </div>
 
+            @foreach ($filters as $title => $filter )
                 <div class="space-y-1">
-                    <div class="font-semibold">Filter title</div>
-                    <div class="flex items-center space-x-2">
-                        <input type="checkbox" id="" value=""> <label for="">Filter (count)</label>
-                    </div>
+                    <div class="font-semibold">{{ Str::title($title) }}</div>
+                    @foreach ($filter as $option => $count)                            
+                        <div class="flex items-center space-x-2">
+                            <input type="checkbox" id="" value=""> <label for="">{{ $option }} ({{ $count }})</label>
+                        </div>
+                    @endforeach
                 </div>
+            @endforeach
             </div>
         </div>
     </div>
