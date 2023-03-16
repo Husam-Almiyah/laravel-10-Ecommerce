@@ -12,6 +12,7 @@ class ProductObserver
      */
     public function created(Product $product): void
     {
+        Artisan::call('scout:flush "App\\\\Models\\\\Product"');
         Artisan::call('scout:import "App\\\\Models\\\\Product"');
     }
 
@@ -20,6 +21,7 @@ class ProductObserver
      */
     public function updated(Product $product): void
     {
+        Artisan::call('scout:flush "App\\\\Models\\\\Product"');
         Artisan::call('scout:import "App\\\\Models\\\\Product"');
     }
 
@@ -28,6 +30,7 @@ class ProductObserver
      */
     public function deleted(Product $product): void
     {
+        Artisan::call('scout:flush "App\\\\Models\\\\Product"');
         Artisan::call('scout:import "App\\\\Models\\\\Product"');
     }
 
@@ -36,6 +39,7 @@ class ProductObserver
      */
     public function restored(Product $product): void
     {
+        Artisan::call('scout:flush "App\\\\Models\\\\Product"');
         Artisan::call('scout:import "App\\\\Models\\\\Product"');
     }
 
@@ -44,6 +48,7 @@ class ProductObserver
      */
     public function forceDeleted(Product $product): void
     {
+        Artisan::call('scout:flush "App\\\\Models\\\\Product"');
         Artisan::call('scout:import "App\\\\Models\\\\Product"');
     }
 }
