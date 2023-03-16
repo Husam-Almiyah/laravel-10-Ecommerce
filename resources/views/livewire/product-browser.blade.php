@@ -21,8 +21,6 @@
                     </div>
                 </div>
 
-                {{ print_r($queryFilters) }}
-
             @foreach ($filters as $title => $filter )
                 <div class="space-y-1">
                     <div class="font-semibold">{{ Str::title($title) }}</div>

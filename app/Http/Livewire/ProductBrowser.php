@@ -23,15 +23,33 @@ class ProductBrowser extends Component
 
     public function render()
     {
-            
-            $search = Product::search('', function ($meilisearch, string $query, array $options){ 
-                 
-                $options['facets'] = ['size', 'color'];
+        $search = Product::search('', function ($meilisearch, string $query, array $options){ 
+            $filters = collect($this->queryFilters)
+            ->filter(fn ($filter) => !empty($filter))
+            ->recursive()
+            ->map(function ($value, $key) {
+                return $value->map(fn ($value) => $key . ' = "' . $value . '"');
+                // Another way to write (fn) closure 
+                // return $value->map(function ($value) use ($key) {
+                //     return $key . '="' . $value . '" AND'; 
+                //     }
+                // );
+            })
+            ->flatten()
+            ->join(' OR ');
+                    
+            $options['facets'] = ['size', 'color'];
 
-                return $meilisearch->search($query, $options);
-            })->raw();
-            
-            $products = $this->category->products->find(collect($search['hits'])->pluck('id'));
+            if ($filters)
+            {
+                $options['filter'] = $filters;
+                // dd($options['filter']);
+            }
+
+            return $meilisearch->search($query, $options);
+        })->raw();
+        
+        $products = $this->category->products->find(collect($search['hits'])->pluck('id'));
 
         return view('livewire.product-browser', [
             'products' => $products,
