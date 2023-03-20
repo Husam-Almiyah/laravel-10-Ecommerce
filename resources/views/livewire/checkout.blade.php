@@ -29,29 +29,32 @@
                     <div class="space-y-3">
                         <div>
                             <label for="address">Address</label>
-                            <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" />
-
-                            <div class="mt-2 font-semibold text-red-500">
-                                An error
-                            </div>
+                            <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" wire:model.defer="shippingForm.address" />
+                            @error('shippingForm.address')
+                                <div class="mt-2 font-semibold text-red-500">
+                                        {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
                             <div class="col-span-1">
-                                <label for="address">City</label>
-                                <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" />
-
-                                <div class="mt-2 font-semibold text-red-500">
-                                    An error
-                                </div>
+                                <label for="city">City</label>
+                                <x-text-input id="city" class="block mt-1 w-full" type="text" name="city" wire:model.defer="shippingForm.city" />
+                                @error('shippingForm.city')
+                                    <div class="mt-2 font-semibold text-red-500">
+                                            {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="col-span-1">
-                                <label for="address">Postal code</label>
-                                <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" />
-
-                                <div class="mt-2 font-semibold text-red-500">
-                                    An error
-                                </div>
+                                <label for="postcode">Postal code</label>
+                                <x-text-input id="postcode" class="block mt-1 w-full" type="text" name="postcode" wire:model.defer="shippingForm.postcode" />
+                                @error('shippingForm.postcode')
+                                    <div class="mt-2 font-semibold text-red-500">
+                                            {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                     </div>
