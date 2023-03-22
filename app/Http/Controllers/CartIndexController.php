@@ -16,7 +16,7 @@ class CartIndexController extends Controller
 
         } catch (QuantityNoLongerAvailable $ex) {
 
-            dd('sync');
+            $cart->syncAvailableQuantities();
             
         }
 
