@@ -20,7 +20,7 @@ class ShippingAddress extends Model
         return sprintf('%s, %s, %s',
             $this->address,
             $this->city,
-            $this->postcode,
+            $this->postcode
         );
     }
 
