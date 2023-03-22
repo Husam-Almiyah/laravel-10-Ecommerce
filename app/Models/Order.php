@@ -27,8 +27,24 @@ class Order extends Model
     public static function booted()
     {
         static::creating(function (Order $order) {
-            $order->placed_at = now();
+            $order->placed_at = $order->packaged_at = $order->shipped_at = now();
             $order->uuid = (string) Str::uuid();
         });
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function shippingType()
+    {
+        return $this->belongsTo(ShippingType::class);
+    }
+
+    public function shippingAddress()
+    {
+        return $this->belongsTo(ShippingAddress::class);
+    }
+
 }
