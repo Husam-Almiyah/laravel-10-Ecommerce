@@ -117,6 +117,8 @@ class Checkout extends Component
         $cart->removeAll();
 
         Mail::to($order->email)->send(new OrderCreated($order));
+        
+        $cart->destroy();
 
         if (!auth()->user()) {
             return redirect()->route('orders.confirmation', $order);

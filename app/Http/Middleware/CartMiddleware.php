@@ -21,6 +21,7 @@ class CartMiddleware
         if (!$this->cart->exists()) {
             $this->cart->create($request->user());
         }
+
         return $next($request);
     }
 }
